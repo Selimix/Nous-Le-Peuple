@@ -53,3 +53,27 @@ router.post('/optimize', async (req, res) => {
 
   res.json(data);
 });
+const multer = require('multer');
+
+const storage = multer.diskStorage({
+  destination(req, file, cb) {
+    cb(null, 'uploads/');
+  },
+  filename(req, file, cb) {
+    cb(null, `${file.fieldname}-${Date.now()}${path.extname(file.originalname)}`);
+  },
+});
+
+const upload = multer({ storage });
+
+router.post('/:id/photo', upload.single('photo'), async (req, res) => {
+  const panel = await Panel.findById(req.params.id);
+
+  if (panel) {
+    panel.photo = req.file.path;
+    await panel.save();
+    res.json(panel);
+  } else {
+    res.status(404).json({ message: 'Panel not found' });
+  }
+});
