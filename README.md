@@ -154,4 +154,55 @@ Le script mettra à jour le serveur, installera Node.js, npm, et MongoDB, cloner
 ---
 
 Avec cette structure et ces instructions, vous pouvez facilement déployer et gérer votre projet de gestion de collage d'affiches. Assurez-vous de personnaliser les fichiers et les configurations selon vos besoins spécifiques.
+
+## Routes de l'API
+
+### Routes Utilisateurs
+
+- **Inscription**
+  - `POST /api/users/register`
+  - Corps de la requête : `{ "name": "Nom", "email": "email@example.com", "password": "password" }`
+
+- **Connexion**
+  - `POST /api/users/login`
+  - Corps de la requête : `{ "email": "email@example.com", "password": "password" }`
+
+- **Obtenir tous les utilisateurs**
+  - `GET /api/users`
+  - Headers : `Authorization: Bearer <token>`
+
+### Routes Panneaux
+
+- **Obtenir tous les panneaux**
+  - `GET /api/panels`
+
+- **Ajouter un panneau**
+  - `POST /api/panels`
+  - Corps de la requête : `{ "location": "Adresse", "coordinates": { "lat": 48.8566, "lng": 2.3522 } }`
+
+- **Assigner un panneau à un utilisateur**
+  - `PUT /api/panels/:id/assign`
+  - Corps de la requête : `{ "userId": "ID de l'utilisateur" }`
+
+### Routes Administration
+
+- **Valider un utilisateur**
+  - `PUT /api/admin/validate/:id`
+  - Headers : `Authorization: Bearer <token>`
+
+- **Obtenir les statistiques globales**
+  - `GET /api/admin/stats`
+  - Headers : `Authorization: Bearer <token>`
+
+- **Obtenir les statistiques d'un utilisateur**
+  - `GET /api/admin/user-stats/:id`
+  - Headers : `Authorization: Bearer <token>`
+
+- **Supprimer un utilisateur**
+  - `DELETE /api/admin/user/:id`
+  - Headers : `Authorization: Bearer <token>`
+
+- **Limiter un utilisateur**
+  - `PUT /api/admin/limit/:id`
+  - Headers : `Authorization: Bearer <token>`
 ```
