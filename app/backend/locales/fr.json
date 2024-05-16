@@ -1,0 +1,10 @@
+{
+  "USER_ALREADY_EXISTS": "L'utilisateur existe déjà",
+  "INVALID_USER_DATA": "Données utilisateur invalides",
+  "INVALID_EMAIL_OR_PASSWORD": "Email ou mot de passe invalide",
+  "USER_NOT_FOUND": "Utilisateur non trouvé",
+  "PASSWORD_UPDATED": "Mot de passe mis à jour",
+  "USER_REGISTERED_SUCCESS": "Utilisateur enregistré avec succès",
+  "USER_LOGIN_SUCCESS": "Connexion réussie",
+  "USER_NOT_AUTHORIZED": "Utilisateur non autorisé"
+}
