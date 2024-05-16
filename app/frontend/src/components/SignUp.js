@@ -8,8 +8,12 @@ const SignUp = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post('/api/users/register', { name, email, password });
-    console.log(data);
+    try {
+      const { data } = await axios.post('/api/users/register', { name, email, password });
+      console.log(data);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
