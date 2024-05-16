@@ -7,8 +7,12 @@ const Login = () => {
 
   const submitHandler = async (e) => {
     e.preventDefault();
-    const { data } = await axios.post('/api/users/login', { email, password });
-    console.log(data);
+    try {
+      const { data } = await axios.post('/api/users/login', { email, password });
+      console.log(data);
+    } catch (error) {
+      console.error(error.message);
+    }
   };
 
   return (
