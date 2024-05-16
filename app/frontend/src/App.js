@@ -6,6 +6,8 @@ import Login from './components/Login';
 import ValidateUsers from './components/Admin/ValidateUsers';
 import Stats from './components/Admin/Stats';
 import ManageUsers from './components/Admin/ManageUsers';
+import UserStats from './components/UserStats';
+import UserRanking from './components/UserRanking';
 
 const App = () => {
   return (
@@ -17,6 +19,8 @@ const App = () => {
           <Route path="/admin/validate-users" component={ValidateUsers} />
           <Route path="/admin/stats" component={Stats} />
           <Route path="/admin/manage-users" component={ManageUsers} />
+          <Route path="/user/stats" component={UserStats} />
+          <Route path="/user/ranking" component={UserRanking} />
           <Route path="/" component={Dashboard} />
         </Switch>
       </div>
