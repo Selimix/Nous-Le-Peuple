@@ -7,10 +7,12 @@ const userSchema = new mongoose.Schema({
   password: { type: String, required: true },
 });
 
+// Method to match passwords
 userSchema.methods.matchPassword = async function (enteredPassword) {
   return await bcrypt.compare(enteredPassword, this.password);
 };
 
+// Middleware to hash password before saving
 userSchema.pre('save', async function (next) {
   if (!this.isModified('password')) {
     next();
