@@ -2,7 +2,7 @@ const express = require('express');
 const connectDB = require('./config');
 const userRoutes = require('./routes/userRoutes');
 const panelRoutes = require('./routes/panelRoutes');
-const path = require('path');
+const adminRoutes = require('./routes/adminRoutes'); // Importez les nouvelles routes
 require('dotenv').config();
 
 const app = express();
@@ -17,6 +17,7 @@ app.use(express.urlencoded({ extended: true }));
 // Routes
 app.use('/api/users', userRoutes);
 app.use('/api/panels', panelRoutes);
+app.use('/api/admin', adminRoutes); // Ajoutez les nouvelles routes
 
 // Static file serving for production build
 if (process.env.NODE_ENV === 'production') {
