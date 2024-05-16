@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import OptimizeRoute from './OptimizeRoute';
 import UploadPhoto from './UploadPhoto';
+import LoadingScreen from './LoadingScreen';
 
 const Dashboard = () => {
   const [panels, setPanels] = useState([]);
@@ -22,7 +23,7 @@ const Dashboard = () => {
     fetchPanels();
   }, []);
 
-  if (loading) return <p>Loading...</p>;
+  if (loading) return <LoadingScreen />;
   if (error) return <p>Error: {error}</p>;
 
   return (
