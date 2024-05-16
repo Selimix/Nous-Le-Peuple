@@ -2,6 +2,36 @@
 
 L'application "Optimisation du Collage d'Affiches Électorales" est une plateforme destinée aux militants bénévoles pour faciliter et optimiser le processus de collage d'affiches électorales sur les panneaux électoraux en France. Cette application permet aux bénévoles de s'inscrire, de planifier leurs tournées, de rapporter leurs actions et de collaborer efficacement pour une couverture optimale du territoire.
 
+## Structure
+racine/
+|-- backend/
+|   |-- models/
+|   |   |-- User.js
+|   |   |-- Panel.js
+|   |-- routes/
+|   |   |-- userRoutes.js
+|   |   |-- panelRoutes.js
+|   |-- scripts/
+|   |   |-- importPanels.js
+|   |-- app.js
+|   |-- config.js
+|-- data/
+|   |-- panels.csv
+|-- frontend/
+|   |-- public/
+|   |-- src/
+|   |   |-- components/
+|   |   |   |-- Dashboard.js
+|   |   |   |-- Map.js
+|   |   |   |-- SignUp.js
+|   |   |   |-- Login.js
+|   |   |-- App.js
+|   |   |-- index.js
+|-- .env
+|-- package.json
+|-- README.md
+|-- deploy.sh
+
 ## Fonctionnalités
 
 - **Inscription et Connexion des Utilisateurs**
@@ -98,3 +128,4 @@ Les contributions sont les bienvenues ! Pour commencer :
 ## Licence
 
 Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
+
