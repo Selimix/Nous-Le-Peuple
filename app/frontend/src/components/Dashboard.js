@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import axios from 'axios';
 import OptimizeRoute from './OptimizeRoute';
 import UploadPhoto from './UploadPhoto';
-import Map from './Map';
 
 const Dashboard = () => {
   const [panels, setPanels] = useState([]);
