@@ -5,6 +5,14 @@ const userSchema = new mongoose.Schema({
   name: { type: String, required: true },
   email: { type: String, required: true, unique: true },
   password: { type: String, required: true },
+  isValidated: { type: Boolean, default: false }, // Nouveau champ pour validation
+  stats: {
+    points: { type: Number, default: 0 },
+    coveredPoints: { type: Number, default: 0 },
+    kmTravelled: { type: Number, default: 0 },
+    panelsPosted: { type: Number, default: 0 },
+  },
+  role: { type: String, default: 'user' } // Nouveau champ pour le rôle
 });
 
 // Method to match passwords
