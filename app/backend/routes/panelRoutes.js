@@ -36,3 +36,20 @@ router.put('/:id/assign', async (req, res) => {
 });
 
 module.exports = router;
+const axios = require('axios');
+
+// Route to get optimized route
+router.post('/optimize', async (req, res) => {
+  const { panelIds } = req.body;
+
+  const panels = await Panel.find({ '_id': { $in: panelIds } });
+
+  const waypoints = panels.map(panel => `${panel.coordinates.lat},${panel.coordinates.lng}`).join('|');
+
+  const googleMapsApiKey = process.env.GOOGLE_MAPS_API_KEY;
+  const url = `https://maps.googleapis.com/maps/api/directions/json?origin=${waypoints[0]}&destination=${waypoints[waypoints.length - 1]}&waypoints=optimize:true|${waypoints}&key=${googleMapsApiKey}`;
+
+  const { data } = await axios.get(url);
+
+  res.json(data);
+});
