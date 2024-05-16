@@ -1,155 +1,157 @@
-# Optimisation du Collage d'Affiches Électorales
+# Projet de Gestion de Collage d'Affiches
 
-L'application "Optimisation du Collage d'Affiches Électorales" est une plateforme destinée aux militants bénévoles pour faciliter et optimiser le processus de collage d'affiches électorales sur les panneaux électoraux en France. Cette application permet aux bénévoles de s'inscrire, de planifier leurs tournées, de rapporter leurs actions et de collaborer efficacement pour une couverture optimale du territoire.
+## Description
 
-# Structure du Projet
+Cette application permet à des militants bénévoles de coller des affiches sur les panneaux électoraux partout en France. Les bénévoles peuvent s'inscrire, être validés par un administrateur, et recevoir des tournées optimisées pour coller des affiches. Les administrateurs peuvent gérer les utilisateurs, valider les comptes, visualiser des statistiques globales, et plus encore.
 
-Voici la structure de votre projet :
-## Détails des Fichiers et Répertoires
+## Fonctionnalités
 
-### Backend
+### Utilisateurs
 
-- `backend/models/`
-  - `User.js` : Modèle Mongoose pour les utilisateurs.
-  - `Panel.js` : Modèle Mongoose pour les panneaux électoraux.
-- `backend/routes/`
-  - `userRoutes.js` : Routes pour l'inscription et la connexion des utilisateurs.
-  - `panelRoutes.js` : Routes pour gérer les panneaux électoraux.
-- `backend/scripts/`
-  - `importPanels.js` : Script pour importer des panneaux à partir d'un fichier CSV.
-- `backend/app.js` : Fichier principal pour configurer et démarrer le serveur Express.
-- `backend/config.js` : Configuration de la connexion à MongoDB.
+- **Inscription et Connexion** : Les utilisateurs peuvent s'inscrire et se connecter à l'application.
+- **Validation des Comptes** : Les comptes des utilisateurs doivent être validés par un administrateur avant de pouvoir utiliser l'application.
+- **Tableau de Bord** : Les utilisateurs peuvent voir leurs tournées et téléverser des photos des panneaux où ils ont collé des affiches.
+- **Statistiques Personnelles** : Les utilisateurs peuvent voir le nombre de kilomètres parcourus, le nombre de panneaux collés, et plus.
+- **Classement** : Un classement des utilisateurs basé sur le nombre de panneaux collés.
+- **Système de Médailles** : Les utilisateurs reçoivent des médailles en fonction des paliers atteints (par exemple, 10, 20, 50 panneaux collés).
 
-### Données
+### Administrateurs
 
-- `data/panels.csv` : Exemple de fichier CSV contenant les données des panneaux électoraux.
+- **Validation des Utilisateurs** : Les administrateurs peuvent valider les comptes des utilisateurs.
+- **Gestion des Utilisateurs** : Les administrateurs peuvent supprimer ou limiter les utilisateurs.
+- **Statistiques Globales** : Les administrateurs peuvent voir le nombre total d'utilisateurs, le nombre de panneaux, et le nombre de panneaux couverts.
+- **Fiches Statistiques des Utilisateurs** : Les administrateurs peuvent consulter les statistiques individuelles des utilisateurs.
 
-### Frontend
+## Structure du Projet
 
-- `frontend/public/` : Répertoire public pour les fichiers statiques.
-- `frontend/src/`
-  - `assets/`
-    - `logo.svg` : Logo SVG utilisé dans l'écran de chargement.
-  - `components/`
-    - `Dashboard.js` : Composant principal du tableau de bord.
-    - `Map.js` : Composant de la carte utilisant React Leaflet.
-    - `SignUp.js` : Composant pour l'inscription des utilisateurs.
-    - `Login.js` : Composant pour la connexion des utilisateurs.
-    - `LoadingScreen.js` : Composant pour l'écran de chargement.
-    - `LoadingScreen.css` : Styles pour l'écran de chargement.
-  - `App.js` : Composant principal de l'application React.
-  - `index.js` : Point d'entrée de l'application React.
+```
+project-root/
+|-- backend/
+|   |-- models/
+|   |   |-- User.js
+|   |   |-- Panel.js
+|   |-- routes/
+|   |   |-- userRoutes.js
+|   |   |-- panelRoutes.js
+|   |   |-- adminRoutes.js
+|   |-- scripts/
+|   |   |-- importPanels.js
+|   |-- middleware/
+|   |   |-- authMiddleware.js
+|   |-- app.js
+|   |-- config.js
+|-- data/
+|   |-- panels.csv
+|-- frontend/
+|   |-- public/
+|   |-- src/
+|   |   |-- assets/
+|   |   |   |-- logo.svg
+|   |   |-- components/
+|   |   |   |-- Admin/
+|   |   |   |   |-- ValidateUsers.js
+|   |   |   |   |-- Stats.js
+|   |   |   |   |-- ManageUsers.js
+|   |   |   |-- Dashboard.js
+|   |   |   |-- Map.js
+|   |   |   |-- SignUp.js
+|   |   |   |-- Login.js
+|   |   |   |-- UserStats.js
+|   |   |   |-- UserRanking.js
+|   |   |   |-- LoadingScreen.js
+|   |   |   |-- LoadingScreen.css
+|   |   |-- App.js
+|   |   |-- index.js
+|-- .env
+|-- package.json
+|-- README.md
+|-- deploy.sh
+```
 
-### Configuration et Déploiement
+## Installation
 
-- `.env` : Fichier de configuration des variables d'environnement.
-- `package.json` : Fichier de configuration du projet Node.js.
-- `README.md` : Documentation du projet.
-- `deploy.sh` : Script de déploiement pour installer les dépendances et configurer le serveur.
+### Prérequis
 
-## Instructions de Déploiement
+- Node.js et npm
+- MongoDB
+
+### Étapes d'Installation
+
+1. Clonez le dépôt :
+   ```bash
+   git clone https://github.com/votre-utilisateur/votre-repo.git
+   cd votre-repo
+   ```
+
+2. Configurez les variables d'environnement :
+   Créez un fichier `.env` à la racine du projet avec le contenu suivant :
+   ```env
+   MONGO_URI=mongodb+srv://<username>:<password>@<cluster>.mongodb.net/<database>?retryWrites=true&w=majority
+   JWT_SECRET=your_jwt_secret
+   NODE_ENV=development
+   OSRM_PATH=/path/to/your/osrm/file.osrm
+   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
+   ```
+
+3. Installez les dépendances backend :
+   ```bash
+   cd backend
+   npm install
+   ```
+
+4. Installez les dépendances frontend :
+   ```bash
+   cd ../frontend
+   npm install
+   ```
+
+5. Importez les données des panneaux :
+   ```bash
+   cd ../backend
+   npm run import:panels
+   ```
+
+6. Démarrez le serveur backend :
+   ```bash
+   npm start
+   ```
+
+7. Démarrez le serveur frontend :
+   ```bash
+   cd ../frontend
+   npm start
+   ```
+
+## Déploiement
 
 Pour déployer ce projet sur un serveur, suivez les étapes suivantes :
 
 1. Rendez le script de déploiement exécutable :
    ```bash
    chmod +x deploy.sh
+   ```
 
-
-## Fonctionnalités
-
-- **Inscription et Connexion des Utilisateurs**
-  - Création de compte et authentification des utilisateurs.
-  
-- **Gestion des Panneaux Électoraux**
-  - Importation de listes de panneaux électoraux via des fichiers CSV.
-  - Visualisation des panneaux sur une carte interactive.
-
-- **Attribution des Panneaux et Optimisation des Tournées**
-  - Sélection des panneaux par les bénévoles.
-  - Optimisation des itinéraires avec OSRM (Open Source Routing Machine).
-
-- **Suivi et Rapport d'Activité**
-  - Upload de photos des affiches collées.
-  - Validation des actions et historique des activités des bénévoles.
-
-- **Collaboration et Partage**
-  - Tableau de bord collaboratif pour suivre l'avancement du collage des affiches.
-  - Notifications pour rappeler les tâches et informer des nouvelles affectations.
-
-## Captures d'Écran
-
-### Tableau de Bord
-![Tableau de Bord](https://via.placeholder.com/600x400)
-
-### Optimisation de la Tournée
-![Optimisation de la Tournée](https://via.placeholder.com/600x400)
-
-### Upload de Photos
-![Upload de Photos](https://via.placeholder.com/600x400)
-
-## Technologies Utilisées
-
-- **Frontend** : React.js
-- **Backend** : Node.js avec Express.js
-- **Base de Données** : MongoDB
-- **API Cartographique** : Leaflet pour la visualisation des panneaux
-- **Optimisation des Itinéraires** : OSRM (Open Source Routing Machine)
-
-## Installation
-
-### Prérequis
-
-- Node.js
-- MongoDB
-- OSRM backend configuré avec le fichier OSM pour la France
-
-### Instructions
-
-1. Clonez le dépôt :
-
+2. Exécutez le script de déploiement :
    ```bash
-   git clone https://github.com/votre-utilisateur/nom-du-repo.git
-   cd nom-du-repo
+   ./deploy.sh
    ```
 
-2. Configurez les variables d'environnement :
+Le script mettra à jour le serveur, installera Node.js, npm, et MongoDB, clonera le dépôt, installera les dépendances, configurera l'environnement, et démarrera le serveur.
 
-   Créez un fichier `.env` dans le répertoire `backend` avec les variables suivantes :
+## Utilisation
 
-   ```plaintext
-   MONGO_URI=your_mongo_database_uri
-   JWT_SECRET=your_secret_key
-   GOOGLE_MAPS_API_KEY=your_google_maps_api_key
-   ```
+### Accès Administrateur
 
-3. Installez les dépendances et lancez le serveur backend :
+- Accédez à `/admin/validate-users` pour valider les utilisateurs.
+- Accédez à `/admin/stats` pour voir les statistiques globales.
+- Accédez à `/admin/manage-users` pour gérer les utilisateurs.
 
-   ```bash
-   cd backend
-   npm install
-   node app.js
-   ```
+### Accès Utilisateur
 
-4. Installez les dépendances et lancez le serveur frontend :
+- Accédez à `/user/stats` pour voir les statistiques personnelles.
+- Accédez à `/user/ranking` pour voir le classement des utilisateurs.
 
-   ```bash
-   cd ../frontend
-   npm install
-   npm start
-   ```
+---
 
-## Contribuer
-
-Les contributions sont les bienvenues ! Pour commencer :
-
-1. Forkez le projet
-2. Créez votre branche de fonctionnalité (`git checkout -b fonctionnalite/AmazingFeature`)
-3. Commitez vos changements (`git commit -m 'Ajout d'une fonctionnalité incroyable'`)
-4. Poussez la branche (`git push origin fonctionnalite/AmazingFeature`)
-5. Ouvrez une Pull Request
-
-## Licence
-
-Ce projet est sous licence MIT. Voir le fichier [LICENSE](LICENSE) pour plus de détails.
-
+Avec cette structure et ces instructions, vous pouvez facilement déployer et gérer votre projet de gestion de collage d'affiches. Assurez-vous de personnaliser les fichiers et les configurations selon vos besoins spécifiques.
+```
