@@ -2,35 +2,59 @@
 
 L'application "Optimisation du Collage d'Affiches Électorales" est une plateforme destinée aux militants bénévoles pour faciliter et optimiser le processus de collage d'affiches électorales sur les panneaux électoraux en France. Cette application permet aux bénévoles de s'inscrire, de planifier leurs tournées, de rapporter leurs actions et de collaborer efficacement pour une couverture optimale du territoire.
 
-## Structure
-racine/
-|-- backend/
-|   |-- models/
-|   |   |-- User.js
-|   |   |-- Panel.js
-|   |-- routes/
-|   |   |-- userRoutes.js
-|   |   |-- panelRoutes.js
-|   |-- scripts/
-|   |   |-- importPanels.js
-|   |-- app.js
-|   |-- config.js
-|-- data/
-|   |-- panels.csv
-|-- frontend/
-|   |-- public/
-|   |-- src/
-|   |   |-- components/
-|   |   |   |-- Dashboard.js
-|   |   |   |-- Map.js
-|   |   |   |-- SignUp.js
-|   |   |   |-- Login.js
-|   |   |-- App.js
-|   |   |-- index.js
-|-- .env
-|-- package.json
-|-- README.md
-|-- deploy.sh
+# Structure du Projet
+
+Voici la structure de votre projet :
+## Détails des Fichiers et Répertoires
+
+### Backend
+
+- `backend/models/`
+  - `User.js` : Modèle Mongoose pour les utilisateurs.
+  - `Panel.js` : Modèle Mongoose pour les panneaux électoraux.
+- `backend/routes/`
+  - `userRoutes.js` : Routes pour l'inscription et la connexion des utilisateurs.
+  - `panelRoutes.js` : Routes pour gérer les panneaux électoraux.
+- `backend/scripts/`
+  - `importPanels.js` : Script pour importer des panneaux à partir d'un fichier CSV.
+- `backend/app.js` : Fichier principal pour configurer et démarrer le serveur Express.
+- `backend/config.js` : Configuration de la connexion à MongoDB.
+
+### Données
+
+- `data/panels.csv` : Exemple de fichier CSV contenant les données des panneaux électoraux.
+
+### Frontend
+
+- `frontend/public/` : Répertoire public pour les fichiers statiques.
+- `frontend/src/`
+  - `assets/`
+    - `logo.svg` : Logo SVG utilisé dans l'écran de chargement.
+  - `components/`
+    - `Dashboard.js` : Composant principal du tableau de bord.
+    - `Map.js` : Composant de la carte utilisant React Leaflet.
+    - `SignUp.js` : Composant pour l'inscription des utilisateurs.
+    - `Login.js` : Composant pour la connexion des utilisateurs.
+    - `LoadingScreen.js` : Composant pour l'écran de chargement.
+    - `LoadingScreen.css` : Styles pour l'écran de chargement.
+  - `App.js` : Composant principal de l'application React.
+  - `index.js` : Point d'entrée de l'application React.
+
+### Configuration et Déploiement
+
+- `.env` : Fichier de configuration des variables d'environnement.
+- `package.json` : Fichier de configuration du projet Node.js.
+- `README.md` : Documentation du projet.
+- `deploy.sh` : Script de déploiement pour installer les dépendances et configurer le serveur.
+
+## Instructions de Déploiement
+
+Pour déployer ce projet sur un serveur, suivez les étapes suivantes :
+
+1. Rendez le script de déploiement exécutable :
+   ```bash
+   chmod +x deploy.sh
+
 
 ## Fonctionnalités
 
